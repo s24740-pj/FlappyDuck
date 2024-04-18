@@ -1,0 +1,3 @@
+/Users/kamilpowierza/Desktop/Studia/Semestr 6/SGD/FlappyDuck/cmake-build-debug/CMakeFiles/FlappyDuck.dir
+/Users/kamilpowierza/Desktop/Studia/Semestr 6/SGD/FlappyDuck/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/kamilpowierza/Desktop/Studia/Semestr 6/SGD/FlappyDuck/cmake-build-debug/CMakeFiles/rebuild_cache.dir
