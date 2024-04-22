@@ -1037,4 +1037,8 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/not_fn.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/pointer_to_binary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/unary_negate.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/unary_negate.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/duck.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/pipe.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/settings.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/collision.h
