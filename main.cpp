@@ -2,6 +2,12 @@
 #include <iostream>
 #include <memory>
 #include <thread>
+#include <vector>
+
+#include "duck.h"
+#include "pipe.h"
+#include "collision.h"
+#include "settings.h"
 
 // check for errors
 #define errcheck(e)                                                            \
@@ -13,73 +19,15 @@
     }                                                                          \
   }
 
-class Duck
-{
-public:
-    SDL_Rect rect;
-    SDL_Texture* texture;
-    float vy; //velocity
-    float ay = 0.00001; //acceleration
-    double angle;
-
-    Duck(int x, int y){
-        rect.x = x;
-        rect.y = y;
-        rect.w = 30;
-        rect.h = 20;
-        angle = 0;
-    }
-
-    void resetPos(int x, int y){
-        rect.x = x;
-        rect.y = y;
-        angle = 0;
-        vy = 0;
-        ay = 0.00001;
-    }
-
-    void draw(SDL_Renderer* renderer){
-        SDL_Surface* surf = SDL_CreateRGBSurface(0, rect.w, rect.h, 32, 0, 0, 0, 0);
-        SDL_FillRect(surf, NULL, SDL_MapRGB(surf->format, 255, 200, 0));
-        texture = SDL_CreateTextureFromSurface(renderer, surf);
-        SDL_FreeSurface(surf);
-
-        SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
-    }
-
-    void gravity(float dt){
-        vy += ay * dt;
-        rect.y += vy * dt + 0.5 * ay * dt * dt;
-        if (angle < 90){
-            angle += 1.5;
-        }
-    }
-
-    bool collision(const int height) const{
-        if (rect.y < 0 || rect.y + rect.h > height){
-            return false;
-        }
-        return true;
-    }
-
-    void flap(){
-        vy = -0.05;
-        ay = 0.00001;
-        angle = -35;
-    }
-};
-
 int main(int , char **) {
     using namespace std;
     using namespace std::chrono;
-    const int width = 700;
-    const int height = 900;
 
     errcheck(SDL_Init(SDL_INIT_VIDEO) != 0);
 
     SDL_Window *window = SDL_CreateWindow(
             "FlappyDuck", SDL_WINDOWPOS_UNDEFINED,
-            SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
+            SDL_WINDOWPOS_UNDEFINED, settings_windowWidth, settings_windowHeight, SDL_WINDOW_SHOWN);
     errcheck(window == nullptr);
 
     SDL_Renderer *renderer = SDL_CreateRenderer(
@@ -87,6 +35,12 @@ int main(int , char **) {
     errcheck(renderer == nullptr);
 
     Duck duck(200, 300);
+
+    std::vector<Pipe> pipes;
+
+    for (int i = 0; i < 3; i++) {
+        pipes.push_back(Pipe(renderer, settings_windowWidth + 101 + i * (Pipe::pipe_width + (settings_windowWidth-(Pipe::pipe_width*3))/2)));
+    }
 
     milliseconds dt(15);
 
@@ -96,28 +50,50 @@ int main(int , char **) {
 
     for (bool game_active = true; game_active;) {
         SDL_Event event;
-        while (SDL_PollEvent(&event)) { // check if there are some events
+        while (SDL_PollEvent(&event)) {
             if (event.type == SDL_QUIT)
                 game_active = false;
-            else if (event.key.keysym.sym == SDLK_p and not start)
-            {
-                start = true;
-                duck.resetPos(200, 300);
-            }
-            else if (event.key.keysym.sym == SDLK_SPACE and start)
-            {
-                duck.flap();
+            else if (event.type == SDL_KEYDOWN) {
+                if (event.key.keysym.sym == SDLK_p && !start && event.key.repeat == 0) {
+                    // p - Play
+                    start = true;
+                    duck.resetPos();
+                }
+                else if (event.key.keysym.sym == SDLK_SPACE && start && event.key.repeat == 0) {
+                    // space - Flap/Jump
+                    duck.flap();
+                }
+                else if (event.key.keysym.sym == SDLK_r && event.key.repeat == 0) {
+                    // r - Restart the game
+                    duck.resetPos();
+                    pipes.clear();
+                    for (int i = 0; i < 3; i++) {
+                        pipes.push_back(Pipe(renderer, settings_windowWidth + 101 + i * (Pipe::pipe_width + (settings_windowWidth-(Pipe::pipe_width*3))/2)));
+                    }
+                }
             }
         }
+
         if(start){
             duck.gravity(200);
-            start = duck.collision(height);
+            start = duck.collision(settings_windowHeight);
+
+            for (auto& pipe : pipes) {
+                pipe.movement(3);
+                if (check_pipe_collision(&duck.rect, pipe)) {
+                    start = false;
+                    break;
+                }
+            }
         }
 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         SDL_RenderClear(renderer);
 
         duck.draw(renderer);
+        for (auto& pipe : pipes) {
+            pipe.draw(renderer);
+        }
 
         SDL_RenderPresent(renderer);
 

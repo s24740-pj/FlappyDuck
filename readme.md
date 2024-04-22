@@ -8,3 +8,8 @@ It is a simply recreation of FlappyBird where you fly over the pipes.
 `cmake ../` - cmake to build the overview<br>
 `make` - Build the current version of game in build folder <br>
 Simply `run` FlappyDuck executable.
+
+## Keybinds
+`p` - Play/Start the game<br>
+`r`  - Restart the game<br>
+`space` - Flap/Jump<br>

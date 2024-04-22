@@ -104,11 +104,11 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "/Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config-version.cmake"
+			"path" : "/opt/homebrew/lib/cmake/SDL2/sdl2-config-version.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "/Library/Frameworks/SDL2.framework/Resources/CMake/sdl2-config.cmake"
+			"path" : "/opt/homebrew/lib/cmake/SDL2/sdl2-config.cmake"
 		},
 		{
 			"isCMake" : true,
