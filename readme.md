@@ -10,7 +10,7 @@ FlappyDuck is a simple recreation of the popular game FlappyBird. In this game, 
 To set up and run FlappyDuck, follow these steps: <br>
 1. **Clone the Repository**
     ```sh
-    git clone https://github.com/yourusername/FlappyDuck.git
+    git clone https://github.com/s24740-pj/FlappyDuck.git
     cd FlappyDuck
     ```
 2. **Create Build Directory**
