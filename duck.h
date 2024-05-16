@@ -2,6 +2,13 @@
 #define FLAPPYDUCK_DUCK_H
 
 #include <SDL2/SDL.h>
+#include "pipe.h"
+
+/*
+ * +DESCRIPTION+
+ * Duck is falling down by gravity and falling faster over the time
+ * Flewing between the pipe is checking by duck X and pipe X, if they are the same then he flew through the pipe
+ */
 
 class Duck
 {
@@ -24,6 +31,7 @@ public:
         angle = 0;
     }
 
+    // Resetting the position and rotation of duck
     void resetPos(){
         rect.x = defaultX;
         rect.y = defaultY;
@@ -32,33 +40,49 @@ public:
         ay = 0.00001;
     }
 
-    void draw(SDL_Renderer* renderer){
-        SDL_Surface* surf = SDL_CreateRGBSurface(0, rect.w, rect.h, 32, 0, 0, 0, 0);
-        SDL_FillRect(surf, NULL, SDL_MapRGB(surf->format, 255, 200, 0));
-        texture = SDL_CreateTextureFromSurface(renderer, surf);
-        SDL_FreeSurface(surf);
-
-        SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
+    // Checks if duck is between pipe
+    // By checking if duck is between the pipe is calculating if his X is the same as pipe X
+    // If he is then return true and count the point
+    // In this example we don't need to check where the gap is and what is the Y of duck
+    bool isBetweenPipe(Pipe pipe){
+        return rect.x+1 >= pipe.getPosX()+50 && rect.x-1 <= pipe.getPosX()+50;
     }
 
+    // Rendering the duck
+    void draw(SDL_Renderer* renderer){
+        SDL_Surface* surface = SDL_LoadBMP("./textures/duck.bmp");
+        SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer,surface);
+        SDL_FreeSurface(surface);
+        SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
+        SDL_DestroyTexture(texture);
+    }
+
+    // Enabling gravity of duck to falling only down
     void gravity(float dt){
         vy += ay * dt;
         rect.y += vy * dt + 0.5 * ay * dt * dt;
+        // When falling, the duck is changing the rotation
+        // Not affected where he is falling
         if (angle < 90){
             angle += 1.5;
         }
     }
 
-    bool collision(const int widnowHeight) const{
-        if (rect.y < 0 || rect.y + rect.h > widnowHeight){
-            return false;
+    // Checks if duck collision with floor or ceiling
+    bool collision(const int windowHeight) const{
+        if (rect.y < 0 || rect.y + rect.h > windowHeight){
+            return true;
         }
-        return true;
+        return false;
     }
 
+    // Flap is the same as jumping
     void flap(){
+        // Changing the velocity to negative to "fall" upwards
         vy = -0.05;
+        // Resetting the acceleration to slow down
         ay = 0.00001;
+        // Changing his angle/rotation to make him looks like flying up
         angle = -35;
     }
 };

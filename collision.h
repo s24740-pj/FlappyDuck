@@ -4,6 +4,11 @@
 #include "duck.h"
 #include "pipe.h"
 
+/*
+ * +DESCRIPTION+
+ * Collision is checking by the overlapping two textures
+ */
+
 bool check_collision(SDL_Rect* A, SDL_Rect* B) {
     int leftA = A->x;
     int rightA = A->x + A->w;
@@ -21,6 +26,7 @@ bool check_collision(SDL_Rect* A, SDL_Rect* B) {
     return true;
 }
 
+// Checks if duck hit the pipe
 bool check_pipe_collision(SDL_Rect* duckRect, Pipe& pipe) {
     return check_collision(duckRect, &pipe.upperRect) || check_collision(duckRect, &pipe.lowerRect);
 }

@@ -1039,8 +1039,14 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: /Users/kamilpowierza/Desktop/Studia/Semest
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/not_fn.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/pointer_to_binary_function.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/pointer_to_unary_function.h \
-  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/unary_negate.h
+  /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/unary_negate.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/duck.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/pipe.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/settings.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/collision.h
 
+
+/Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/pipe.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/unary_negate.h:
 
@@ -1940,6 +1946,8 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: /Users/kamilpowierza/Desktop/Studia/Semest
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__type_traits/predicate_traits.h:
 
+/Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/settings.h:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__functional/operations.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__concepts/copyable.h:
@@ -1965,6 +1973,8 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: /Users/kamilpowierza/Desktop/Studia/Semest
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__locale:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_mbstate_t.h:
+
+/Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/collision.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/remove_if.h:
 
@@ -2937,6 +2947,8 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: /Users/kamilpowierza/Desktop/Studia/Semest
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_ino64_t.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/sys/_types/_sigset_t.h:
+
+/Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/duck.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__type_traits/is_void.h:
 

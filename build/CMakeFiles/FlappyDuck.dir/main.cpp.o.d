@@ -1041,4 +1041,5 @@ CMakeFiles/FlappyDuck.dir/main.cpp.o: \
   /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/duck.h \
   /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/pipe.h \
   /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/settings.h \
-  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/collision.h
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/collision.h \
+  /Users/kamilpowierza/Desktop/Studia/Semestr\ 6/SGD/FlappyDuck/particle.h

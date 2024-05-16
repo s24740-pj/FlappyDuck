@@ -245,7 +245,7 @@ SDL2_TTF_INCLUDE_DIR:PATH=/usr/local/include/SDL2
 SDL2_TTF_LIBRARY:FILEPATH=/usr/local/lib/libSDL2_ttf.dylib
 
 //The directory containing a CMake configuration file for SDL2_ttf.
-SDL2_ttf_DIR:PATH=/usr/local/lib/cmake/SDL2_ttf
+SDL2_ttf_DIR:PATH=/Library/Frameworks/SDL2_ttf.framework/Resources/CMake
 
 //Path to a file.
 SDL_TTF_INCLUDE_DIR:PATH=SDL_TTF_INCLUDE_DIR-NOTFOUND
