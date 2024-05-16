@@ -22,7 +22,7 @@ public:
     // Setting width of pipe
     static const int pipe_width = 80;
     // Gap is the gap between the upper pipe and lower pipe
-    static const int pipe_gap = 250;
+    static const int pipe_gap = settings_pipeGap;
 
     Pipe(SDL_Renderer* renderer, int x) {
         // Randomizing the height of the gap will be

@@ -36,7 +36,7 @@ int main(int , char **) {
     errcheck(renderer == nullptr);
 
     // Placing the duck to default position
-    Duck duck(200, 300);
+    Duck duck(settings_duckX, settings_duckY);
 
     // Implementing particleSystem
     ParticleSystem particleSystem;
@@ -55,6 +55,7 @@ int main(int , char **) {
     bool explosionTriggered = false;
     bool hit = false;
     int points = 0;
+    float pipeSpeed = settings_pipeSpeed;
 
     // Whole game loop
     for (bool game_active = true; game_active;) {
@@ -100,7 +101,7 @@ int main(int , char **) {
         // Waiting to start the game
         if(start){
             // Enabling the duck gravity
-            duck.gravity(200);
+            duck.gravity(settings_duckGravity);
             // Stopping the game when duck collision the floor or ceiling
             start = !duck.collision(settings_windowHeight);
 
@@ -112,7 +113,7 @@ int main(int , char **) {
 
             // Runs pipe to move with dx speed
             for (auto& pipe : pipes) {
-                pipe.movement(3);
+                pipe.movement(pipeSpeed);
                 // Checks if duck hit the pipe (has the collision with the pipe)
                 if (check_pipe_collision(&duck.rect, pipe)) {
                     start = false;
@@ -127,7 +128,6 @@ int main(int , char **) {
                 }
             }
         }
-
         // Setting background texture
         SDL_Surface* surface = SDL_LoadBMP("./textures/background.bmp");
         SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer,surface);
@@ -152,8 +152,8 @@ int main(int , char **) {
 
         // Waiting to trigger the explosion with the settings below (colors, localization, amount)
         if(explosionTriggered){
-            SDL_Color color = { 255, 0,  0, 255 };
-            particleSystem.explosion(duck.rect.x + duck.rect.w, duck.rect.y + (duck.rect.h/2), 25, color);
+            SDL_Color color = settings_color;
+            particleSystem.explosion(duck.rect.x + duck.rect.w, duck.rect.y + (duck.rect.h/2), settings_amount, color);
             // Instantly disabling trigger to trigger only once
             explosionTriggered = false;
         }
