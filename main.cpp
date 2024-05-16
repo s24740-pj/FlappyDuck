@@ -32,7 +32,7 @@ int main(int , char **) {
     errcheck(window == nullptr);
 
     SDL_Renderer *renderer = SDL_CreateRenderer(
-            window, -1, SDL_RENDERER_ACCELERATED); // SDL_RENDERER_PRESENTVSYNC
+            window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     errcheck(renderer == nullptr);
 
     // Placing the duck to default position
@@ -142,12 +142,13 @@ int main(int , char **) {
         SDL_RenderCopy(renderer, texture, NULL, &background);
         SDL_DestroyTexture(texture);
 
-        // Rendering all the pipes in pipes array
+        // Rendering duck
         duck.draw(renderer);
+
+        // Rendering all the pipes in pipes array
         for (auto& pipe : pipes) {
             pipe.draw(renderer);
         }
-
 
         // Waiting to trigger the explosion with the settings below (colors, localization, amount)
         if(explosionTriggered){
@@ -156,7 +157,6 @@ int main(int , char **) {
             // Instantly disabling trigger to trigger only once
             explosionTriggered = false;
         }
-
 
         // Checks if duck hit something, then starts updating the particles render
         if(hit){
@@ -172,7 +172,6 @@ int main(int , char **) {
                 }
             }
         }
-
 
         SDL_RenderPresent(renderer);
         this_thread::sleep_until(current_time = current_time + dt);
