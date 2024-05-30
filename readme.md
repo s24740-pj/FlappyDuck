@@ -1,6 +1,8 @@
 # FlappyDuck
 ## Overview
-FlappyDuck is a simple recreation of the popular game FlappyBird. In this game, you control a duck that must navigate through a series of pipes without colliding with them. The objective is to achieve the highest score by flying as far as possible without hitting any obstacles.
+`FlappyDuck` is a simple recreation of the popular game `FlappyBird`. In this game, you control a duck that must navigate through a series of pipes without colliding with them. The objective is to achieve the highest score by flying as far as possible without hitting any obstacles. 
+
+This project is built using `SDL2`, which is utilized for rendering graphics, handling input, and managing game events.
 
 ## Screenshots
 ![alt text](https://raw.githubusercontent.com/s24740-pj/FlappyDuck/main/screenshots/Screenshot1.png)
