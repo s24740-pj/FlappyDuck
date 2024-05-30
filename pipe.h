@@ -17,7 +17,7 @@ class Pipe {
 public:
     SDL_Rect upperRect;
     SDL_Rect lowerRect;
-    SDL_Texture *texture;
+    SDL_Texture* texture;
 
     // Setting width of pipe
     static const int pipe_width = 80;
@@ -33,15 +33,17 @@ public:
         // First rendering upper pipe by the randomY and then lower is calculating by the gap size
         upperRect = {x, randomY - settings_windowHeight, pipe_width, settings_windowHeight};
         lowerRect = {x, randomY + pipe_gap, pipe_width, settings_windowHeight};
-
-        SDL_Surface* surface = SDL_LoadBMP("./textures/pipe.bmp");
-        texture = SDL_CreateTextureFromSurface(renderer,surface);
-        SDL_FreeSurface(surface);
     }
 
     void draw(SDL_Renderer* renderer) {
+        SDL_Surface* surface = SDL_LoadBMP("./textures/pipe.bmp");
+        texture = SDL_CreateTextureFromSurface(renderer,surface);
+        SDL_FreeSurface(surface);
+
         SDL_RenderCopy(renderer, texture, NULL, &upperRect);
         SDL_RenderCopy(renderer, texture, NULL, &lowerRect);
+
+        SDL_DestroyTexture(texture);
     }
 
     // Enabling the movement of pipe to the left by speed of dx
@@ -54,7 +56,7 @@ public:
 
     // Checks if pipe hit the wall to the left
     void wallCollision(){
-        if (upperRect.x && lowerRect.x <= 1){
+        if (upperRect.x && lowerRect.x <= 1-pipe_width){
             updatePipe();
         }
     }
@@ -63,8 +65,8 @@ public:
     void updatePipe(){
         int newHeight = rand() % (settings_windowHeight - pipe_gap);
 
-        upperRect.x = settings_windowWidth + 100 + pipe_width;
-        lowerRect.x = settings_windowWidth + 100 + pipe_width;
+        upperRect.x = settings_windowWidth + 100;
+        lowerRect.x = settings_windowWidth + 100;
 
         lowerRect.y = newHeight - settings_windowHeight;
         upperRect.y = newHeight + pipe_gap;

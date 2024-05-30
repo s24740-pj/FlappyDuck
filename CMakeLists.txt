@@ -13,6 +13,7 @@ add_executable(FlappyDuck main.cpp
         pipe.h
         collision.h
         settings.h
-        particle.h)
+        particle.h
+        counter.h)
 target_link_libraries(FlappyDuck ${SDL2_LIBRARIES})
 file(COPY ${CMAKE_SOURCE_DIR}/textures/ DESTINATION ${CMAKE_BINARY_DIR}/textures/)

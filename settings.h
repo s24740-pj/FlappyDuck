@@ -21,7 +21,7 @@ int settings_duckGravity = 200;
 
 // PARTICLE
 SDL_Color settings_color = { 255, 0,  0, 255 };
-int settings_amount = 25;
+int settings_particleAmount = 25;
 
 
 #endif //FLAPPYDUCK_SETTINGS_H

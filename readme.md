@@ -48,3 +48,6 @@ To set up and run FlappyDuck, follow these steps: <br>
 `settings.h` Provides customizable settings for the game, such as the game window size, gravity, and other physics parameters.
 
 `particle.h` Defines the Particle class for any particle effects used in the game, enhancing the visual experience.
+
+`counter.h` Defines the Counter class which is responsible for displaying the player's score. It loads the digit textures from a BMP file, arranges them, and updates the score display in the game.
+![alt text](https://raw.githubusercontent.com/s24740-pj/FlappyDuck/main/screenshots/Screenshot3.png)

@@ -9,6 +9,7 @@
 #include "collision.h"
 #include "settings.h"
 #include "particle.h"
+#include "counter.h"
 
 // check for errors
 #define errcheck(e)                                                            \
@@ -37,6 +38,9 @@ int main(int , char **) {
 
     // Placing the duck to default position
     Duck duck(settings_duckX, settings_duckY);
+
+    // Defining the points counter
+    Counter counter(renderer);
 
     // Implementing particleSystem
     ParticleSystem particleSystem;
@@ -150,10 +154,13 @@ int main(int , char **) {
             pipe.draw(renderer);
         }
 
+        // Display points
+        counter.display(points);
+
         // Waiting to trigger the explosion with the settings below (colors, localization, amount)
         if(explosionTriggered){
             SDL_Color color = settings_color;
-            particleSystem.explosion(duck.rect.x + duck.rect.w, duck.rect.y + (duck.rect.h/2), settings_amount, color);
+            particleSystem.explosion(duck.rect.x + duck.rect.w, duck.rect.y + (duck.rect.h/2), settings_particleAmount, color);
             // Instantly disabling trigger to trigger only once
             explosionTriggered = false;
         }
